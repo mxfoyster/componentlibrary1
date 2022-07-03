@@ -4,7 +4,8 @@
    
 
  MAKE A SUB DIRECTORY `popup` THEN ADD `popup.js`, `popup.css` & `closebtn.png` TO IT
-    THEN ADD THE FOLLOWING HTML WITHIN YOUR HEAD:
+THEN ADD THE FOLLOWING HTML WITHIN YOUR HEAD:
+   
     
 ```
     <link rel="stylesheet" href="popup/popup.css">
@@ -20,7 +21,9 @@
         #### PUT YOUR HTML FOR INSIDE THE POPUP HERE ####
     </div>
  ```  
-    USE THE `activatePopUp` ID to your control to launch the product, EG:
+
+USE THE `activatePopUp` ID to your control to launch the product, EG:
+
 ```
     <button type="button" id="activatePopUp">Pop Up</button>
 ```
