@@ -3,16 +3,16 @@
 ## By Mark Foyster                 
    
 
- MAKE A SUB DIRECTORY `popup` THEN ADD `popup.js`, `popup.css` & `closebtn.png` TO IT
+MAKE A SUB DIRECTORY `popup` THEN ADD `popup.js`, `popup.css` & `closebtn.png` TO IT
 THEN ADD THE FOLLOWING HTML WITHIN YOUR HEAD:
-   
-    
+
+
 ```
     <link rel="stylesheet" href="popup/popup.css">
     <script src="popup/popup.js" defer></script>
 ```
     
-    ADD THE FOLLOWING HTML WITHIN YOUR BODY
+ADD THE FOLLOWING HTML WITHIN YOUR BODY
 
 ```
     <div class="popUp" id="popUp">
