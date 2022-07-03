@@ -1,0 +1,91 @@
+@keyframes popupFadeIn 
+{
+    from { 
+        visibility: hidden;
+        opacity: 0;
+    }
+    to { 
+        visibility: visible;
+        opacity: 1;
+    }
+}
+
+@keyframes popupFadeOut 
+{
+    from { 
+        visibility: visible;
+        opacity: 1;
+    }
+    to { 
+        visibility: hidden;
+        opacity: 0;
+    }
+}
+
+#closeBtn{
+    float: right;
+    padding: 1vw;
+}
+
+.popUp{
+	position: fixed;
+	width: 90%;
+	height: 90%;
+	left: 5%;
+	top: 5%;
+	background-color: whitesmoke;
+	border-radius: 25px;
+	border: 3px solid mediumblue;
+	padding: 5px;
+    box-shadow: 7px 7px 3px 3px rgb(141, 139, 139); 
+	z-index: 3;
+    overflow: hidden;
+}
+.popUpFadeIn{
+    animation: popupFadeIn 0.5s ease-in-out;
+    visibility: visible;
+}
+
+.popUpFadeOut{
+    animation: popupFadeOut 0.5s ease-in-out;
+    visibility: hidden;
+}
+
+.popUpTitle{
+    color:red;
+    text-align: center;
+}
+
+#galleryWindow{
+    display:inline-block;
+    height: 90%;
+    width: 100%;
+
+}
+#galleryImageOnShow{
+    /* position: absolute; */
+    /* height: 20px;
+    width: 20px; */
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.imageTitleContainer {
+   position: absolute;
+   left: 50%;
+   transform: translateX(-50%);
+   width: 90%;
+   text-align: center;
+  }
+
+#imageTitle{
+   font-size: 1rem;
+   text-align: center;
+}
+
+@media (min-width: 900px) {
+    #imageTitle{
+        font-size: 2rem;
+     }
+}
