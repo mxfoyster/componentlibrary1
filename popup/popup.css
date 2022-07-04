@@ -1,4 +1,28 @@
-@keyframes popupFadeIn 
+/* 
+    #############################################
+    #   Simple Pop Up Window v1.00              #
+    #       By Mark Foyster                     #
+    #############################################
+
+    For usage instructions, please refer to README.md
+
+
+Set up your preferred colours, sizes etc using the custom properties below  
+
+*/
+:root{
+    /* COLOURS */
+    --popUpBackgroundColour: whitesmoke; 
+    --popUpBoxShadowColour: rgb(141, 139, 139); /* Best to set this a darker tone of the background colour */
+    --popUpTitleColour:red;
+    --popUpBorderColour: mediumblue;
+    
+    /* SIZES */
+    --popUpSize: 90%; /*This is the size of the entire popup relative to screen*/
+    --popUpTitleFontSize: 2rem;
+}
+
+@keyframes popUpFadeIn 
 {
     from { 
         visibility: hidden;
@@ -10,7 +34,7 @@
     }
 }
 
-@keyframes popupFadeOut 
+@keyframes popUpFadeOut 
 {
     from { 
         visibility: visible;
@@ -29,32 +53,32 @@
 
 .popUp{
 	position: fixed;
-	width: 90%;
-	height: 90%;
-	left: 5%;
-	top: 5%;
-	background-color: whitesmoke;
+	width: var(--popUpSize);
+	height: var(--popUpSize);
+	left: calc( (100% - var(--popUpSize))/2);
+	top: calc( (100% - var(--popUpSize))/2);
+	background-color: var(--popUpBackgroundColour);
 	border-radius: 25px;
-	border: 3px solid mediumblue;
+	border: 3px solid var(--popUpBorderColour);
 	padding: 5px;
-    box-shadow: 7px 7px 3px 3px rgb(141, 139, 139); 
+    box-shadow: 7px 7px 3px 3px var(--popUpBoxShadowColour); 
 	z-index: 3;
     overflow: hidden;
 }
 .popUpFadeIn{
-    animation: popupFadeIn 0.5s ease-in-out;
+    animation: popUpFadeIn 0.5s ease-in-out;
     visibility: visible;
 }
 
 .popUpFadeOut{
-    animation: popupFadeOut 0.5s ease-in-out;
+    animation: popUpFadeOut 0.5s ease-in-out;
     visibility: hidden;
 }
 
 .popUpTitle{
-    color:red;
+    color: var(--popUpTitleColour);
     text-align: center;
-    font-size: 2rem;
+    font-size: var(--popUpTitleFontSize);
 }
 
 
@@ -62,10 +86,13 @@
    position: absolute;
    left: 50%;
    transform: translateX(-50%);
-   width: 90%;
+   width: var(--popUpSize);
    text-align: center;
 }
 
+.stopScrolling{
+	overflow: hidden;
+}
 
 
 
