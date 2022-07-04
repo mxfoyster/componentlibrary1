@@ -3,7 +3,7 @@
 
 I have a quite a bit of my own JavaScript and CSS code that I re-use on a regular basis. I would like to put them all in one place, this is the place!
 
-### ADDED DO FAR!
+### ADDED SO FAR!
 1. popup (JavaScript and CSS Pop Up Box)
 2. menu (PHP and CSS nav bar)
 3. gallery (JavaScript and CSS gallery utilising HTML Canvas )

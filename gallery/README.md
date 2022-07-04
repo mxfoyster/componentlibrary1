@@ -3,4 +3,4 @@
 
 ### Brief Description
 
-The gallery utilises the popup component within this repo with a HTML canvas within it to display photos in a 'gallery' style arrangement.
+The gallery utilises the popup component within this repo, placing a HTML canvas within it to display photos in a 'gallery' style arrangement.
