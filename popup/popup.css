@@ -47,8 +47,11 @@ Set up your preferred colours, sizes etc using the custom properties below
 }
 
 #closeBtn{
-    float: right;
-    padding: 1vw;
+    position:absolute;
+	right: 10px;
+	top: 10px;
+    /* padding: 1vw;*/
+	z-index: 4; 
 }
 
 .popUp{
