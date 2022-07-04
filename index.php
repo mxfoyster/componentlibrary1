@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/main-style.css">
     <link rel="stylesheet" href="popup/popup.css">
+    <link rel="stylesheet" href="menu/menu.css">
+    
+    <title>Component Library 1 (Pop Up Demo)</title>
+
     <script src="popup/popup.js" defer></script>
     <title>Component Library 1</title>
 </head>
@@ -14,6 +18,7 @@
 
         <div class="header">
            <h1>Component Library 1</h1> 
+           <?php $_GET['id']=1; include 'menu/menu.php' ?>
         </div>
 
         <div class="middle">

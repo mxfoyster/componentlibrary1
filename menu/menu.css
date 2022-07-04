@@ -1,0 +1,75 @@
+/* 
+
+    #############################################
+    #   Simple PHP/CSS Menu v1.00               #
+    #       By Mark Foyster                     #
+    #############################################
+
+    For usage instructions, please refer to README.md
+
+
+*/
+
+:root{
+	--menuColor: #45923a; /*rgba(247, 255, 247, 0.8; */
+    --menuSelected: #7a9876;
+}
+
+@keyframes menuItemSelected{
+    from{
+        background-color: var(--menuColor);
+    }
+    to{
+        background-color: var(--menuSelected);
+    }
+}
+
+@keyframes menuItemHover {
+    from{
+        color: whitesmoke;
+    }
+    to{
+        color:blue;
+    }
+}
+
+.menuContainer{
+	display: flex;
+	flex-wrap: wrap;
+	gap: 20px;
+	justify-content: space-evenly;
+    margin-top: auto;
+    margin-bottom: auto;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.menuItemUnselected{
+    text-decoration: none;
+    background-color: var(--menuColor);
+    padding: 8px;
+    border-radius: 5px;
+    color: whitesmoke;
+}
+
+.menuItemSelected{
+    /* background-color: var(--menuSelected) !important; */
+    text-decoration: none;
+    background-color: var(--menuSelected);
+    padding: 8px;
+    border-radius: 5px;
+    color: whitesmoke;
+    animation-name: menuItemSelected;
+  	animation-duration: 2s;
+    animation-direction: normal;
+}
+
+@media (hover: hover) {
+    .menuItemHoverable:hover{
+        color:blue;
+        animation-name: menuItemHover;
+        animation-duration: 1s;
+        animation-direction: normal;
+    }
+
+}
