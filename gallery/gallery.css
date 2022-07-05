@@ -72,3 +72,15 @@
     visibility: visible;
 }
 
+#zoomCtlBox{
+    position: absolute;
+    bottom: 5%;
+    left: calc(50% - 40px);
+    background-color: whitesmoke;
+    padding: 5px;
+    border-radius: 10px;
+}
+.zoomControls{
+    padding: 10px;
+}
+

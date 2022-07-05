@@ -25,14 +25,24 @@ let controlsActiveCount=2; //counter for control fade
 
 //we must make a canvas the correct size for our purpose by creating it dynamically
 //size canvas to the popup window.. ****IF WE DON'T THE IMAGE IS DISTORTED****
-//We'll add the arrows at the same time!
+//We'll add the controls at the same time!
 let canvContWidth = galleryCanvasContainer.offsetWidth;
 let canvContHeight = galleryCanvasContainer.offsetHeight;
-galleryCanvasContainer.innerHTML = "<canvas id=\"galleryCanvas\" width=\"" + canvContWidth + "\" height=\"" + canvContHeight + "\" style=\"border: 1px solid black; \" >Your browser does not support canvas.</canvas> <img src=\"gallery/left.svg\" id=\"leftArrow\"/><img src=\"gallery/right.svg\" id=\"rightArrow\"/>";
+
+let canvasHTML = "<canvas id=\"galleryCanvas\" width=\"" + canvContWidth + "\" height=\"" + canvContHeight + "\">";
+canvasHTML += "Your browser does not support canvas.</canvas>";
+let arrowsHTML = "<img src=\"gallery/left.svg\" id=\"leftArrow\"/><img src=\"gallery/right.svg\" id=\"rightArrow\"/>"
+let zoomHTML = "<span id=\"zoomCtlBox\"><img src=\"gallery/zoom-out.png\" class=\"zoomControls\" id=\"zoomOutCtl\" />";
+zoomHTML += "<img src=\"gallery/zoom-in.png\" class=\"zoomControls\" id=\"zoomInCtl\" /></span>"
+
+galleryCanvasContainer.innerHTML =canvasHTML + arrowsHTML + zoomHTML;
 //get handles for canvas and controls we added
 const galleryCanvas = document.getElementById("galleryCanvas"); 
 const leftArrow = document.getElementById('leftArrow');
 const rightArrow = document.getElementById('rightArrow');
+const zoomCtlBox = document.getElementById("zoomCtlBox");
+const zoomOutCtl = document.getElementById("zoomOutCtl");
+const zoomInCtl = document.getElementById("zoomInCtl");
 
 //listeners / event handlers for the arrow controls
 leftArrow.onclick = ()=>{
@@ -53,12 +63,15 @@ rightArrow.onclick = ()=>{
 
 //we need to be able to count down to fade out controls
 setInterval(function() {
-    if (controlsActiveCount > 0) controlsActiveCount-=1;
+    //note popUpStatus is from the popup component, we need it to fade out the controls when popup dismissed
+    if (controlsActiveCount > 0 && popUpStatus == true) controlsActiveCount-=1;
     else {
         leftArrow.classList.remove("fadeControlsIn");
         leftArrow.classList.add("fadeControlsOut");
         rightArrow.classList.remove("fadeControlsIn");
         rightArrow.classList.add("fadeControlsOut");
+        zoomCtlBox.classList.remove("fadeControlsIn");
+        zoomCtlBox.classList.add("fadeControlsOut");
     }
 }
 ,1000);
@@ -77,6 +90,8 @@ function onCanvasPointerMovement(){
         leftArrow.classList.add("fadeControlsIn");
         rightArrow.classList.remove("fadeControlsOut");
         rightArrow.classList.add("fadeControlsIn");
+        zoomCtlBox.classList.remove("fadeControlsOut");
+        zoomCtlBox.classList.add("fadeControlsIn");
     }
 controlsActiveCount = 3;   
 }
@@ -92,6 +107,8 @@ thisImage.onload = function(){displayImage();
 //display image in 'thisImage' onto canvas at best fit
 function displayImage(scaleIt = true){
     galleryCanvas.onwheel = zoomByWheel;
+    zoomOutCtl.onclick = zoomOutByBtn;
+    zoomInCtl.onclick = zoomInByBtn;
     let galleryCanvasCxt = galleryCanvas.getContext("2d"); //get a context
     if (scaleIt) {
         scaleToFit(thisImage, galleryCanvas);
@@ -160,3 +177,14 @@ function zoomByWheel(event)
     displayImage(false); //set false , no re-scale, impement zoom factor instead
 }
 
+function zoomOutByBtn(){
+    zoomFactor -= (0.1 * zoomFactor);
+    controlsActiveCount = 3;
+    displayImage(false);
+}
+
+function zoomInByBtn(){
+    zoomFactor += (0.1 * zoomFactor)
+    controlsActiveCount = 3;
+    displayImage(false);
+}
