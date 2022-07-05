@@ -7,10 +7,9 @@
 
     For usage instructions, please refer to README.md
 
-
 */
 
-
+/*############# CSS FOR CANVAS AND CONTAINER ##############*/
 
 #galleryCanvasContainer{
 	display: inline-block;
@@ -26,3 +25,50 @@
     height: 100%;
     border: 1px solid black;
 }
+
+
+/*################## CSS FOR CONTROLS ######################*/
+#leftArrow{
+    position: absolute;
+    top: calc(50% - 25px);
+    left: calc(10px + 5%);
+}
+#rightArrow{
+    position: absolute;
+    top: calc(50% - 25px);
+    right: calc(10px + 5%);
+}
+
+@keyframes controlFadeIn 
+{
+    from { 
+        visibility: hidden;
+        opacity: 0;
+    }
+    to { 
+        visibility: visible;
+        opacity: 1;
+    }
+}
+
+@keyframes controlFadeOut 
+{
+    from { 
+        visibility: visible;
+        opacity: 1;
+    }
+    to { 
+        visibility: hidden;
+        opacity: 0;
+    }
+}
+
+.fadeControlsOut{
+    animation: controlFadeOut 0.8s ease-in-out;
+    visibility: hidden;
+}
+.fadeControlsIn{
+    animation: controlFadeIn 0.8s ease-in-out;
+    visibility: visible;
+}
+

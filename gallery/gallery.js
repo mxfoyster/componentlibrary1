@@ -19,12 +19,42 @@ let dimensions ={
     height: 0
 };
 
+let controlsActiveCount=2; //counter for control fade
+
 //we must make a canvas the correct size for our purpose by creating it dynamically
 //size canvas to the popup window.. ****IF WE DON'T THE IMAGE IS DISTORTED****
+//We'll add the arrows at the same time!
 let canvContWidth = galleryCanvasContainer.offsetWidth;
 let canvContHeight = galleryCanvasContainer.offsetHeight;
-galleryCanvasContainer.innerHTML = "<canvas id=\"galleryCanvas\" width=\"" + canvContWidth + "\" height=\"" + canvContHeight + "\" style=\"border: 1px solid black; \" >Your browser does not support canvas.</canvas>";
-const galleryCanvas = document.getElementById("galleryCanvas"); //get a handle for it
+galleryCanvasContainer.innerHTML = "<canvas id=\"galleryCanvas\" width=\"" + canvContWidth + "\" height=\"" + canvContHeight + "\" style=\"border: 1px solid black; \" >Your browser does not support canvas.</canvas> <img src=\"gallery/left.svg\" id=\"leftArrow\"/><img src=\"gallery/right.svg\" id=\"rightArrow\"/>";
+//get handles for canvas and controls we added
+const galleryCanvas = document.getElementById("galleryCanvas"); 
+const leftArrow = document.getElementById('leftArrow');
+const rightArrow = document.getElementById('rightArrow');
+
+//we need to be able to count down to fade out controls
+setInterval(function() {
+    if (controlsActiveCount > 0) controlsActiveCount-=1;
+    else {
+        leftArrow.classList.remove("fadeControlsIn");
+        leftArrow.classList.add("fadeControlsOut");
+        rightArrow.classList.remove("fadeControlsIn");
+        rightArrow.classList.add("fadeControlsOut");
+    }
+    console.log(controlsActiveCount);
+}
+,1000);
+
+//fade in controls on a mouse movement
+galleryCanvas.onmousemove = ()=>{
+    if (controlsActiveCount >0){
+        leftArrow.classList.remove("fadeControlsOut");
+        leftArrow.classList.add("fadeControlsIn");
+        rightArrow.classList.remove("fadeControlsOut");
+        rightArrow.classList.add("fadeControlsIn");
+    }
+controlsActiveCount = 3;   
+}; //listener for mouse movement over canvas
 
 
 let thisImage = new Image();
