@@ -13,6 +13,7 @@ const imageRoot = "./images/"; //place the subdirectory your images are in here
 const imageList = ["image1.png", "image2.png", "image3.png"]; //place your image names in this array
 
 let currentImage = 1;
+let zoomFactor = 1;
 let dimensions ={
     startX: 0, 
     startY: 0,
@@ -37,15 +38,17 @@ const rightArrow = document.getElementById('rightArrow');
 leftArrow.onclick = ()=>{
     if (currentImage > 0) currentImage --;
     else currentImage = (imageList.length - 1);
+    zoomFactor = 1; //reset zoom or when it's next used it will 'jump'!
     loadImage(currentImage);
-    console.log("left arrow clicked");
+    controlsActiveCount=2; //we should reset controls timer
 };
 
 rightArrow.onclick = ()=>{
     if (currentImage < (imageList.length - 1)) currentImage ++;
     else currentImage = 0;
+    zoomFactor = 1; //reset zoom or when it's next used it will 'jump'!
     loadImage(currentImage);
-    console.log("right arrow clicked");
+    controlsActiveCount=2; //we should reset controls timer
 };
 
 //we need to be able to count down to fade out controls
@@ -57,12 +60,18 @@ setInterval(function() {
         rightArrow.classList.remove("fadeControlsIn");
         rightArrow.classList.add("fadeControlsOut");
     }
-    console.log(controlsActiveCount);
 }
 ,1000);
 
-//fade in controls on a mouse movement
-galleryCanvas.onmousemove = ()=>{
+//fade in controls on a mouse / touch movement over canvas
+galleryCanvas.addEventListener("mousemove", onCanvasPointerMovement);
+galleryCanvas.addEventListener("touchmove", onCanvasPointerMovement);
+
+let thisImage = new Image();
+loadImage(0);
+
+//called by canvas pointer movement event handlers to fade in controls 
+function onCanvasPointerMovement(){
     if (controlsActiveCount >0){
         leftArrow.classList.remove("fadeControlsOut");
         leftArrow.classList.add("fadeControlsIn");
@@ -70,28 +79,35 @@ galleryCanvas.onmousemove = ()=>{
         rightArrow.classList.add("fadeControlsIn");
     }
 controlsActiveCount = 3;   
-}; //listener for mouse movement over canvas
+}
 
 
-let thisImage = new Image();
-loadImage(0);
-
-
+//loads image of supplied index from our image array
 function loadImage(imageNumber){
 thisImage.src = imageRoot + imageList[imageNumber];
-thisImage.onload = function(){
-    console.log("loaded");  
-    //image.src = this.src;   
-    displayImage();
+thisImage.onload = function(){displayImage();
 };
 }
 
-function displayImage(){
+//display image in 'thisImage' onto canvas at best fit
+function displayImage(scaleIt = true){
+    galleryCanvas.onwheel = zoomByWheel;
     let galleryCanvasCxt = galleryCanvas.getContext("2d"); //get a context
-    scaleToFit(thisImage, galleryCanvas);
-    galleryCanvasCxt.clearRect(0, 0, galleryCanvas.width, galleryCanvas.height); //clear the canvas first
-    galleryCanvasCxt.drawImage(thisImage, dimensions.startX, dimensions.startY, dimensions.width, dimensions.height);
-    console.log(dimensions);
+    if (scaleIt) {
+        scaleToFit(thisImage, galleryCanvas);
+        galleryCanvasCxt.clearRect(0, 0, galleryCanvas.width, galleryCanvas.height); //clear the canvas first
+        galleryCanvasCxt.drawImage(thisImage, dimensions.startX, dimensions.startY, dimensions.width, dimensions.height);
+    }
+    else
+    {
+        //calculate new dimensions based on zoom factor
+        let displayedWidth = dimensions.width * zoomFactor;
+        let displayedHeight = dimensions.height * zoomFactor;
+        let zoomingStartX = (canvContWidth - displayedWidth) / 2; //(canvas.width - displayedWidth) / 2;
+        let zoomingStarty = (canvContHeight - displayedHeight) / 2; 
+        galleryCanvasCxt.clearRect(0, 0, galleryCanvas.width, galleryCanvas.height); //clear the canvas first
+        galleryCanvasCxt.drawImage(thisImage, zoomingStartX, zoomingStarty, displayedWidth, displayedHeight);
+    }
 }
 
 
@@ -134,5 +150,13 @@ function scaleToFit(image, canvas){
     dimensions.startX = Math.round(xOffset);
     dimensions.startY = Math.round(yOffset);
     
+}
+
+
+//implement mouse scroll event into a zoom
+function zoomByWheel(event)
+{
+    zoomFactor += event.deltaY * (-0.0002 * zoomFactor); //multiply change by current zoom factor for more 'linear' zoom appearance
+    displayImage(false); //set false , no re-scale, impement zoom factor instead
 }
 
