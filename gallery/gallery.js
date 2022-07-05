@@ -14,6 +14,9 @@ const imageList = ["image1.png", "image2.png", "image3.png"]; //place your image
 
 let currentImage = 1;
 let zoomFactor = 1;
+let xDragOffset = 0;
+let yDragOffset = 0;
+let dragging = false;
 let dimensions ={
     startX: 0, 
     startY: 0,
@@ -49,16 +52,18 @@ leftArrow.onclick = ()=>{
     if (currentImage > 0) currentImage --;
     else currentImage = (imageList.length - 1);
     zoomFactor = 1; //reset zoom or when it's next used it will 'jump'!
+    yDragOffset, xDragOffset = 0; //reset the drag offsets
     loadImage(currentImage);
-    controlsActiveCount=2; //we should reset controls timer
+    controlsActiveCount = 2; //we should reset controls timer
 };
 
 rightArrow.onclick = ()=>{
     if (currentImage < (imageList.length - 1)) currentImage ++;
     else currentImage = 0;
     zoomFactor = 1; //reset zoom or when it's next used it will 'jump'!
+    yDragOffset, xDragOffset = 0; //reset the drag offsets
     loadImage(currentImage);
-    controlsActiveCount=2; //we should reset controls timer
+    controlsActiveCount = 2; //we should reset controls timer
 };
 
 //we need to be able to count down to fade out controls
@@ -76,9 +81,6 @@ setInterval(function() {
 }
 ,1000);
 
-//fade in controls on a mouse / touch movement over canvas
-galleryCanvas.addEventListener("mousemove", onCanvasPointerMovement);
-galleryCanvas.addEventListener("touchmove", onCanvasPointerMovement);
 
 let thisImage = new Image();
 loadImage(0);
@@ -106,9 +108,14 @@ thisImage.onload = function(){displayImage();
 
 //display image in 'thisImage' onto canvas at best fit
 function displayImage(scaleIt = true){
+    //canvas event handlers
     galleryCanvas.onwheel = zoomByWheel;
     zoomOutCtl.onclick = zoomOutByBtn;
     zoomInCtl.onclick = zoomInByBtn;
+    galleryCanvas.onmousemove = doMouseMovementOnCanvas; //will supply mouse event object as default parameter to function
+    galleryCanvas.onmousedown = ()=>{dragging = true};
+    galleryCanvas.onmouseup = ()=>{dragging = false};
+
     let galleryCanvasCxt = galleryCanvas.getContext("2d"); //get a context
     if (scaleIt) {
         scaleToFit(thisImage, galleryCanvas);
@@ -120,8 +127,8 @@ function displayImage(scaleIt = true){
         //calculate new dimensions based on zoom factor
         let displayedWidth = dimensions.width * zoomFactor;
         let displayedHeight = dimensions.height * zoomFactor;
-        let zoomingStartX = (canvContWidth - displayedWidth) / 2; //(canvas.width - displayedWidth) / 2;
-        let zoomingStarty = (canvContHeight - displayedHeight) / 2; 
+        let zoomingStartX = ((canvContWidth - displayedWidth) / 2) + xDragOffset; //(canvas.width - displayedWidth) / 2;
+        let zoomingStarty = ((canvContHeight - displayedHeight) / 2) + yDragOffset; 
         galleryCanvasCxt.clearRect(0, 0, galleryCanvas.width, galleryCanvas.height); //clear the canvas first
         galleryCanvasCxt.drawImage(thisImage, zoomingStartX, zoomingStarty, displayedWidth, displayedHeight);
     }
@@ -187,4 +194,14 @@ function zoomInByBtn(){
     zoomFactor += (0.1 * zoomFactor)
     controlsActiveCount = 3;
     displayImage(false);
+}
+
+function doMouseMovementOnCanvas(mouseEvent){
+    onCanvasPointerMovement(); //as this goes on ANY mouse movement on canvas, we'll use it for control fade in too!
+    if (dragging) {
+        xDragOffset += mouseEvent.movementX;
+        yDragOffset += mouseEvent.movementY;
+        console.log("Dragging");
+        displayImage(false);
+    }
 }
