@@ -12,6 +12,7 @@ const galleryCanvasContainer = document.getElementById("galleryCanvasContainer")
 const imageRoot = "./images/"; //place the subdirectory your images are in here
 const imageList = ["image1.png", "image2.png", "image3.png"]; //place your image names in this array
 
+let currentImage = 1;
 let dimensions ={
     startX: 0, 
     startY: 0,
@@ -31,6 +32,21 @@ galleryCanvasContainer.innerHTML = "<canvas id=\"galleryCanvas\" width=\"" + can
 const galleryCanvas = document.getElementById("galleryCanvas"); 
 const leftArrow = document.getElementById('leftArrow');
 const rightArrow = document.getElementById('rightArrow');
+
+//listeners / event handlers for the arrow controls
+leftArrow.onclick = ()=>{
+    if (currentImage > 0) currentImage --;
+    else currentImage = (imageList.length - 1);
+    loadImage(currentImage);
+    console.log("left arrow clicked");
+};
+
+rightArrow.onclick = ()=>{
+    if (currentImage < (imageList.length - 1)) currentImage ++;
+    else currentImage = 0;
+    loadImage(currentImage);
+    console.log("right arrow clicked");
+};
 
 //we need to be able to count down to fade out controls
 setInterval(function() {
@@ -58,7 +74,7 @@ controlsActiveCount = 3;
 
 
 let thisImage = new Image();
-loadImage(1);
+loadImage(0);
 
 
 function loadImage(imageNumber){
