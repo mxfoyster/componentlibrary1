@@ -19,6 +19,8 @@ let yDragOffset = 0;
 let dragging = false;
 let xTouchDeltaOffset = 0; //to make our own .movementX for touch
 let yTouchDeltaOffset = 0; //to make our own .movementX for touch
+let xTouchPrevPositionOffset = 0; //to preserve position between drags on touch
+let yTouchPrevPositionOffset = 0;
 let dimensions ={
     startX: 0, 
     startY: 0,
@@ -53,22 +55,16 @@ const zoomInCtl = document.getElementById("zoomInCtl");
 leftArrow.onclick = ()=>{
     if (currentImage > 0) currentImage --;
     else currentImage = (imageList.length - 1);
-    zoomFactor = 1; //reset zoom or when it's next used it will 'jump'!
-    yDragOffset = 0; //reset the drag offsets
-    xDragOffset = 0; 
-    loadImage(currentImage);
-    controlsActiveCount = 2; //we should reset controls timer
+    resetCanvas(2);
 };
 
 rightArrow.onclick = ()=>{
     if (currentImage < (imageList.length - 1)) currentImage ++;
     else currentImage = 0;
-    zoomFactor = 1; //reset zoom or when it's next used it will 'jump'!
-    yDragOffset = 0;  //reset the drag offsets
-    xDragOffset = 0;
-    loadImage(currentImage);
-    controlsActiveCount = 2; //we should reset controls timer
+    resetCanvas(2);
 };
+
+
 
 //we need to be able to count down to fade out controls
 setInterval(function() {
@@ -82,12 +78,27 @@ setInterval(function() {
         zoomCtlBox.classList.remove("fadeControlsIn");
         zoomCtlBox.classList.add("fadeControlsOut");
     }
+    //let's be sure everything is reset when the popup is closed ready for next use
+    if (popUpStatus == false){
+        currentImage = 1;
+        resetCanvas(0);
+    }
 }
 ,1000);
 
-
 let thisImage = new Image();
-loadImage(0);
+loadImage(0); //start it up!!!!!
+
+//Reset the canvas zoom and drag values then reload the canvas image
+function resetCanvas(controlInterval){
+    zoomFactor = 1; //reset zoom or when it's next used it will 'jump'!
+    yDragOffset = 0;  //reset the drag offsets
+    xDragOffset = 0;
+    xTouchPrevPositionOffset = 0; //and multi touch offsets
+    yTouchPrevPositionOffset = 0;
+    loadImage(currentImage);
+    controlsActiveCount = controlInterval; //we should reset controls timer
+}
 
 //called by canvas pointer movement event handlers to fade in controls 
 function onCanvasPointerMovement(){
@@ -101,7 +112,6 @@ function onCanvasPointerMovement(){
     }
 controlsActiveCount = 3;   
 }
-
 
 //loads image of supplied index from our image array
 function loadImage(imageNumber){
@@ -131,8 +141,8 @@ function displayImage(scaleIt = true){
         };
     galleryCanvas.ontouchend = (touchEvent)=>{
         dragging = false
-        xDragOffset += xTouchDeltaOffset;
-        yDragOffset += yTouchDeltaOffset;
+        xTouchPrevPositionOffset = xDragOffset;
+        yTouchPrevPositionOffset = yDragOffset;
         };
 
     let galleryCanvasCxt = galleryCanvas.getContext("2d"); //get a context
@@ -170,30 +180,25 @@ function scaleToFit(image, canvas){
         usableWidth = usableHeight / imageAspectRatio; //then set width from height using stored aspect ratoo
     }  
     //the image is more landscape shaped than the available screen
-    else 
-    {
+    else {
         usableWidth = canvas.width; //so we sqeeze or stretch to width
         usableHeight = usableWidth * imageAspectRatio; //then set height from width using aspect ratio
     }
-
-     
+ 
     //default x & y offsets (image centre offsets)
     let xOffset = 0;
     let yOffset = 0;
      
      //Calculate offsets
-     if (usableWidth < canvas.width) xOffset = (canvas.width - usableWidth) / 2;
-     if (usableHeight < canvas.height) yOffset = (canvas.height - usableHeight) / 2;
-    
+    if (usableWidth < canvas.width) xOffset = (canvas.width - usableWidth) / 2;
+    if (usableHeight < canvas.height) yOffset = (canvas.height - usableHeight) / 2;
     
     //store them in our dimensions object
     dimensions.width = Math.round(usableWidth);
     dimensions.height = Math.round(usableHeight);
     dimensions.startX = Math.round(xOffset);
     dimensions.startY = Math.round(yOffset);
-    
 }
-
 
 //implement mouse scroll event into a zoom
 function zoomByWheel(event)
@@ -226,8 +231,8 @@ function doMouseMovementOnCanvas(mouseEvent){
 function doTouchMovementOnCanvas(touchEvent){
     onCanvasPointerMovement(); //as this goes on ANY mouse movement on canvas, we'll use it for control fade in too!
     if (dragging) {
-        xDragOffset = (touchEvent.touches[0].clientX - xTouchDeltaOffset);
-        yDragOffset = (touchEvent.touches[0].clientY - yTouchDeltaOffset);
+        xDragOffset = (touchEvent.touches[0].clientX - xTouchDeltaOffset) + xTouchPrevPositionOffset;
+        yDragOffset = (touchEvent.touches[0].clientY - yTouchDeltaOffset) + yTouchPrevPositionOffset;
         displayImage(false);
     }
 }
