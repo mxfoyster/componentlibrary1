@@ -17,6 +17,8 @@ let zoomFactor = 1;
 let xDragOffset = 0;
 let yDragOffset = 0;
 let dragging = false;
+let xTouchDeltaOffset = 0; //to make our own .movementX for touch
+let yTouchDeltaOffset = 0; //to make our own .movementX for touch
 let dimensions ={
     startX: 0, 
     startY: 0,
@@ -24,7 +26,7 @@ let dimensions ={
     height: 0
 };
 
-let controlsActiveCount=2; //counter for control fade
+let controlsActiveCount = 2; //counter for control fade
 
 //we must make a canvas the correct size for our purpose by creating it dynamically
 //size canvas to the popup window.. ****IF WE DON'T THE IMAGE IS DISTORTED****
@@ -52,7 +54,8 @@ leftArrow.onclick = ()=>{
     if (currentImage > 0) currentImage --;
     else currentImage = (imageList.length - 1);
     zoomFactor = 1; //reset zoom or when it's next used it will 'jump'!
-    yDragOffset, xDragOffset = 0; //reset the drag offsets
+    yDragOffset = 0; //reset the drag offsets
+    xDragOffset = 0; 
     loadImage(currentImage);
     controlsActiveCount = 2; //we should reset controls timer
 };
@@ -61,7 +64,8 @@ rightArrow.onclick = ()=>{
     if (currentImage < (imageList.length - 1)) currentImage ++;
     else currentImage = 0;
     zoomFactor = 1; //reset zoom or when it's next used it will 'jump'!
-    yDragOffset, xDragOffset = 0; //reset the drag offsets
+    yDragOffset = 0;  //reset the drag offsets
+    xDragOffset = 0;
     loadImage(currentImage);
     controlsActiveCount = 2; //we should reset controls timer
 };
@@ -112,9 +116,24 @@ function displayImage(scaleIt = true){
     galleryCanvas.onwheel = zoomByWheel;
     zoomOutCtl.onclick = zoomOutByBtn;
     zoomInCtl.onclick = zoomInByBtn;
+    
+    //First we handle the mouse events
     galleryCanvas.onmousemove = doMouseMovementOnCanvas; //will supply mouse event object as default parameter to function
     galleryCanvas.onmousedown = ()=>{dragging = true};
     galleryCanvas.onmouseup = ()=>{dragging = false};
+    
+    //for touch, we have to handle things differently (we don't have a mouseEvent.movementX etc)
+    galleryCanvas.ontouchmove = doTouchMovementOnCanvas; //same for touch screens
+    galleryCanvas.ontouchstart = (touchEvent)=>{
+        dragging = true
+        xTouchDeltaOffset = touchEvent.touches[0].clientX; //store x offset
+        yTouchDeltaOffset = touchEvent.touches[0].clientY; //store y offset
+        };
+    galleryCanvas.ontouchend = (touchEvent)=>{
+        dragging = false
+        xDragOffset += xTouchDeltaOffset;
+        yDragOffset += yTouchDeltaOffset;
+        };
 
     let galleryCanvasCxt = galleryCanvas.getContext("2d"); //get a context
     if (scaleIt) {
@@ -128,12 +147,11 @@ function displayImage(scaleIt = true){
         let displayedWidth = dimensions.width * zoomFactor;
         let displayedHeight = dimensions.height * zoomFactor;
         let zoomingStartX = ((canvContWidth - displayedWidth) / 2) + xDragOffset; //(canvas.width - displayedWidth) / 2;
-        let zoomingStarty = ((canvContHeight - displayedHeight) / 2) + yDragOffset; 
+        let zoomingStartY = ((canvContHeight - displayedHeight) / 2) + yDragOffset; 
         galleryCanvasCxt.clearRect(0, 0, galleryCanvas.width, galleryCanvas.height); //clear the canvas first
-        galleryCanvasCxt.drawImage(thisImage, zoomingStartX, zoomingStarty, displayedWidth, displayedHeight);
+        galleryCanvasCxt.drawImage(thisImage, zoomingStartX, zoomingStartY, displayedWidth, displayedHeight);
     }
 }
-
 
 //our scaling and centreing math / logic
 function scaleToFit(image, canvas){
@@ -201,7 +219,15 @@ function doMouseMovementOnCanvas(mouseEvent){
     if (dragging) {
         xDragOffset += mouseEvent.movementX;
         yDragOffset += mouseEvent.movementY;
-        console.log("Dragging");
+        displayImage(false);
+    }
+}
+
+function doTouchMovementOnCanvas(touchEvent){
+    onCanvasPointerMovement(); //as this goes on ANY mouse movement on canvas, we'll use it for control fade in too!
+    if (dragging) {
+        xDragOffset = (touchEvent.touches[0].clientX - xTouchDeltaOffset);
+        yDragOffset = (touchEvent.touches[0].clientY - yTouchDeltaOffset);
         displayImage(false);
     }
 }
