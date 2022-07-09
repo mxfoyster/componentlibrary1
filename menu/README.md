@@ -1,9 +1,11 @@
 # PHP & CSS MENU SYSTEM v1.00
 ## By Mark Foyster
 
-A simple 'Button' style nav bar.
+A simple 'Button' style nav bar. Here's a screenshot of it in use elsewhere:
 
-The nav bar is set in a `flexbox` style container set to evenly distribute the buttons horizontally and overflow will wrap.
+![Screen shot of menu](menuss.png)
+
+The nav bar is set in a `flexbox` style container set to evenly distribute the buttons horizontally and overflow will wrap. it's quite plain but customising it takes little effort.
 
 ### Implementation
 
@@ -53,3 +55,12 @@ This is done using menu.css. There are custom properties for the colours like so
 ```
 
 Alter the colours to suit your style. Further alterations are strtaighforward by manipulating the CSS directly.
+
+
+---
+
+### Change Log
+
+#### *v1.00* 
+
+- Initial release. Code extracted (recycled) from previous projects
