@@ -1,0 +1,26 @@
+/*
+    #############################################
+    #  Simple Teletype style scroller v1.00     #
+    #       By Mark Foyster                     #
+    #############################################
+
+    For usage instructions, please refer to README.md
+
+*/
+
+@font-face 
+{
+    font-family: VT-323;
+    src: url("VT323/VT323-Regular.ttf");
+}
+
+.scroll
+{
+	font-family: VT-323;
+	font-size: 1.5rem;
+	color:rgb(87, 143, 32);
+	background-color: black;
+	padding: 2px;
+	padding-left: 4px;
+	border-radius: 4px;
+}

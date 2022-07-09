@@ -19,5 +19,6 @@ function isSelected($id){
 <nav class="menuContainer">
     <a href="index.php"<?php isSelected(1);?>>Home</a>
     <a href="gallery.php"<?php isSelected(2);?>>Gallery</a>
+    <a href="ttyheading.php"<?php isSelected(3);?>>TTY-Heading</a>
    
 </nav>

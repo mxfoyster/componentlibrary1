@@ -9,6 +9,7 @@ This is pretty basic stuff and I consider it all practice and part of my aim to 
 1. popup (JavaScript and CSS Pop Up Box). [HERE](https://github.com/mxfoyster/componentlibrary1/tree/main/popup)
 2. menu (PHP and CSS nav bar). [HERE](https://github.com/mxfoyster/componentlibrary1/tree/main/menu)
 3. gallery (JavaScript and CSS gallery utilising HTML Canvas). [HERE](https://github.com/mxfoyster/componentlibrary1/tree/main/gallery)
+4. ttyheading (Javascript and CSS console style scrolling heading). [HERE](https://github.com/mxfoyster/componentlibrary1/tree/main/ttyheading)
 
 Click the link for each project which each has it's own readme with screenshots, implementation guides and change logs.
 
