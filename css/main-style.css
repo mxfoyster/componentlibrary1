@@ -16,8 +16,8 @@ h1{
 @media (min-width: 900px) {
 	
     p{
-        background-color:antiquewhite;
-        border-radius: 8px;
+        /* background-color:antiquewhite;
+        border-radius: 8px; */
         padding: 1em;
         margin-left: 10px;
         margin-right: 10px;

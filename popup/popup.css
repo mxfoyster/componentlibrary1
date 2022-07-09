@@ -93,6 +93,14 @@ Set up your preferred colours, sizes etc using the custom properties below
    text-align: center;
 }
 
+.popUpBody{
+    display: inline-block;
+	position: relative;
+	top: 50px; /*calc(var(--popUpTitleFontSize) + 10px); */
+	height: calc(100% - 60px) ;
+	width: 100%;
+}
+
 .stopScrolling{
 	overflow: hidden;
 }

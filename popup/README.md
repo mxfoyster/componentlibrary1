@@ -1,7 +1,8 @@
 
-# Simple Pop Up Window v1.00           
+# Simple Pop Up Window v1.01           
 ## By Mark Foyster                 
    
+![Screen shot of Pop Up Window](images/popupss.png)
 
 ### Implementation
 
@@ -18,11 +19,11 @@ ADD THE FOLLOWING HTML WITHIN YOUR BODY
 
 ```
     <div class="popUp" id="popUp">
-        <div class="popUpTitleContainer"><span class="popUpTitle">PUT YOUR TITLE HERE</span></div>
+        <div class="popUpTitleContainer"><span class="popUpTitle">Pop Up Title Here</span></div>
         <img id="closeBtn" src="popup/closebtn.png">
-        #### PUT YOUR HTML FOR INSIDE THE POPUP HERE ####
+        <div class="popUpBody"><p>PLACE CONTENTS FOR YOUR POP UP IN HERE</p></div>     
     </div>
- ```  
+```  
 
 USE THE `activatePopUp` ID to your control to launch the product, EG:
 
@@ -53,3 +54,16 @@ Within the popup.css, at the top are the following custom properties:
 Simply change the colours and sizes to your preference for minor changes.
 
 The remainder of this CSS file is pretty basic. Further customisation is easy using fundamental CSS knowledge.
+
+---
+
+### Change Log
+#### *v1.01* 
+
+- Addition of inner container div to PopUp Window to facilitate easier addition of content. Before, added contentcould display over title if not formatted correctly. It's now bound to the container.
+
+- Documentation within index.php updated accordingly 
+
+#### *v1.00* 
+
+- Initial release. Code extracted (recycled) from previous projects
