@@ -2,7 +2,7 @@
 # Simple Pop Up Window v1.01           
 ## By Mark Foyster                 
    
-![Screen shot of Pop Up Window](images/popupss.png)
+![Screen shot of Pop Up Window](popupss.png)
 
 ### Implementation
 
