@@ -1,0 +1,37 @@
+/*
+    #############################################
+    #               JUSTCSS v1.00               #
+    #       By Mark Foyster                     #
+    #############################################
+
+    For usage instructions, please refer to README.md
+
+*/
+
+
+/* ########################## CODE FOR BADGE######################## */
+
+@keyframes newMarker {
+	from{
+		background-color: red;
+	}
+	to{
+		background-color: green;
+	}
+}
+
+.badge{
+	animation-name: newMarker;
+  	animation-duration: 2s;
+	animation-iteration-count: infinite;
+	animation-direction: alternate-reverse;
+	padding-left: 7px;
+	padding-right: 7px;
+	color:white;
+	border-radius: 10px;
+	border-style: solid;
+	border-color: black;
+	border-width: 1px;
+}
+
+/* ######################## END OF CODE FOR BADGE##################### */
