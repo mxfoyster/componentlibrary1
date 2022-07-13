@@ -1,7 +1,7 @@
 # Just CSS v1.00           
 ## By Mark Foyster                 
    
-imply a collection of components that utilise CSS only
+Simply a collection of components that utilise CSS only
 
 <!-- ![Screen shot of Teletype Scroller](ttyheadingss.png) -->
 
@@ -12,7 +12,6 @@ If you wish to use several components, you could install the files on your serve
 
 ```
     <link rel="stylesheet" href="justcss/justcss.css">
-   
 ```
 
 To utilise the component, simply add the appropriate class to the element you wish to use. For example, to utilise the **Badge** class:
@@ -27,6 +26,8 @@ NOTE: As with all css, be aware that any default styling provided by the tag you
 ### Customising style
 
 Be brave, have a play with the CSS to make the component work for you.
+
+---
 
 ### Change Log
 
