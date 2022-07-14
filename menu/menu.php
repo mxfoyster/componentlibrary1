@@ -20,5 +20,6 @@ function isSelected($id){
     <a href="index.php"<?php isSelected(1);?>>Home</a>
     <a href="gallery.php"<?php isSelected(2);?>>Gallery</a>
     <a href="ttyheading.php"<?php isSelected(3);?>>TTY-Heading</a>
+    <a href="links.php"<?php isSelected(4);?>>Links</a>
    
 </nav>

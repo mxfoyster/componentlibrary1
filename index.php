@@ -19,9 +19,13 @@
            <h1>Component Library 1</h1> 
            <h2>By Mark Foyster</h2>
            <?php $_GET['id']=1; include 'menu/menu.php' ?>
+           <hr>
         </div>
 
         <div class="middle">
+            <h3>Welcome</h3>
+            <img src="images/smimage.png" class="fwimage" alt="website social media image">
+            <p>Welcome to my Component Library. There are demos for each component within here to help guide you for implementation. Each componenet has a README.md file within the appropriate subdirectory in the repository within GitHub. Here too there is guidance for implementation.</p>
             <!-- POP UP CODE BODY HTML HERE -->
             <div class="popUp" id="popUp">
                 <div class="popUpTitleContainer"><span class="popUpTitle">Pop Up Title Here</span></div>
@@ -29,7 +33,6 @@
                 <div class="popUpBody"><p>PLACE CONTENTS FOR YOUR POP UP IN HERE</p></div>     
             </div>
             <!-- POP UP HTML BODY ENDS HERE -->
-            <p>Welcome to my Component Library. There are demos for each component within here to help guide you for implementation</p>
             
             <h3>Pop Up</h3>
             <p>Press the button to see the popup, code can be found in my GitHub repository <a href="https://github.com/mxfoyster/componentlibrary1/tree/main/popup">HERE</a></p>
@@ -57,12 +60,12 @@
                 </span>
             to see a different tooltip. See how the same code works for multiple instances.</p>
             <p>You will notice ther position of the tooltip depends on implementation.</p>
+                
 
-            <p>"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"</p>
-            <p>"At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat."</p>
-            <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-            <p>"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"</p>
-           
+            <h4>Simple Image Spinner</h4>
+            <p>A simple way using just CSS to cycle between different images like so:</p>
+            <div id="imageSpinnerContainer"></div>
+            <br><br>
         </div>
 
         

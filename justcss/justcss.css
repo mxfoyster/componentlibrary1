@@ -64,3 +64,27 @@
 
 
 /* ###################### END OF CODE FOR TOOLTIPS ################### */
+
+
+
+/* ###################### CODE FOR IMAGESPINNER ################### */
+
+@keyframes imageSpin 
+{
+    0%, 100%  {background-image: url("../images/html.png");}    
+    33%  {background-image: url("../images/css.png");}
+    66%   {background-image: url("../images/JavaScript.png");}
+}
+
+#imageSpinnerContainer 
+{
+    width: 64px; /*Set to your image width*/
+    height: 64px; /*Set to your image Height*/
+    animation-name: imageSpin;
+    animation-duration: 9s;  /*Set duration of ENTIRE cycle */
+    animation-timing-function: ease;
+    animation-iteration-count: infinite;
+    display: inline-block;
+}
+
+/* ###################### END OF CODE FOR IMAGESPINNER ################### */

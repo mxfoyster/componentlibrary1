@@ -29,8 +29,8 @@ Now simply add the *badge* class to the element you wish to use like this:
 
 ---
 
-#### Tool tips
-Add the CSS to your project as explained earlier. Now you have two options, let's add this component to a *badge* component to implement a tooltip. The easiest way is to add the `toolTipContainer` class to the *badge* element and then adding our tooltip inside it like so:
+#### TOOL TIPS
+Simple 'Tool Tips' you can add to your controls etc. Add the CSS to your project as explained earlier. Now you have two options, let's add this component to a *badge* component to implement a tooltip. The easiest way is to add the `toolTipContainer` class to the *badge* element and then put our tooltip inside it like so:
 
 ```
     <p>Testing a <span class="badge toolTipContainer">BADGE<span class="toolTipText">My tooltip</span></span> with hover.</p>
@@ -49,6 +49,39 @@ If a separate contatiner is used to encapsulate the *badge* and *toolTipText* co
 The tooltip text will be display in the exact position of the *badge* element offset by the margins. Therefore, this method is more predictable. 
 
 To change the location of the tooltip, regardless of implementation method, simply alter the margins within the `.toolTipContainer .toolTipText ` selector of the CSS. You can play with the colours, borders etc here too! 
+
+---
+
+#### IMAGE SPINNER
+A simple way to cycle between different images at a set time period. Add the CSS to your project as described before. Change the images to those of your choice here:
+
+```
+    @keyframes imageSpin 
+    {
+        0%, 100%  {background-image: url("../images/html.png");}    
+        33%  {background-image: url("../images/css.png");}
+        66%   {background-image: url("../images/JavaScript.png");}
+    }
+```
+
+You can see we are set up for 3 images at present but you can add or deduct from that by changing the percentage ratio to divide the timeline equally. For stable results, the images need to be the same size. 
+
+Next the size of the images and total duration of the cycle needs to be set in the `immageSpinnerContainer` selector CSS like so:
+
+```
+    #imageSpinnerContainer 
+    {
+        width: 64px; /*Set to your image width*/
+        height: 64px;  /*Set to your image Height*/
+        animation-name: imageSpin;
+        animation-duration: 9s; /*Set duration of ENTIRE cycle */
+        animation-timing-function: ease;
+        animation-iteration-count: infinite;
+        display: inline-block;
+    }
+```
+The comments will guide you where to make the changes. Remember the duration is the entire cycle so each image will be displayed by that number divided by the total number of images, eg, 3 seconds each here... Allow a bit of extra time for the transition for best clarity.
+
 
 ---
 
