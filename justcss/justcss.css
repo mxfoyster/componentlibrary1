@@ -35,3 +35,32 @@
 }
 
 /* ######################## END OF CODE FOR BADGE##################### */
+
+
+
+
+/* ########################## CODE FOR TOOLTIPS ###################### */
+
+
+  
+.toolTipContainer .toolTipText 
+{
+	visibility: hidden;
+	
+	background-color: black;
+	color: #fff;
+	text-align: center;
+	border-radius: 6px;
+	padding: 6px 4px;
+	position: absolute;
+	margin-top: 1.5rem;
+	z-index: 1;
+}
+
+.toolTipContainer:hover .toolTipText 
+{
+	visibility: visible;
+}
+
+
+/* ###################### END OF CODE FOR TOOLTIPS ################### */
