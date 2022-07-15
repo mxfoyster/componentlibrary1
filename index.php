@@ -26,18 +26,21 @@
             <h3>Welcome</h3>
             <img src="images/smimage.png" class="fwimage" alt="website social media image">
             <p>Welcome to my Component Library. There are demos for each component within here to help guide you for implementation. Each componenet has a README.md file within the appropriate subdirectory in the repository within GitHub. Here too there is guidance for implementation.</p>
-            <!-- POP UP CODE BODY HTML HERE -->
+
+            <p>DISCLAIMER: This is a 'for fun' project, the code is not perfect and is work in progress. I'm simply extracting code I used in other personal projects, tidying it up a little and putting it in a repository. I intend to continue adding and improving the project over time. I'm releasing it as Open Source under a GNU GPL v3 license so if anything is useful, feel free to use it any way you please! Thank you for visiting.</p>
             <div class="popUp" id="popUp">
                 <div class="popUpTitleContainer"><span class="popUpTitle">Pop Up Title Here</span></div>
                 <img id="closeBtn" src="popup/closebtn.png">
                 <div class="popUpBody"><p>PLACE CONTENTS FOR YOUR POP UP IN HERE</p></div>     
             </div>
-            <!-- POP UP HTML BODY ENDS HERE -->
+
             
             <h3>Pop Up</h3>
             <p>Press the button to see the popup, code can be found in my GitHub repository <a href="https://github.com/mxfoyster/componentlibrary1/tree/main/popup">HERE</a></p>
             
             <button type="button" id="activatePopUp">Pop Up</button>
+
+            <p>Note how scrolling on the main window is disabled when the popup is active. This makes it easier to use scrolling within the popup. The down side is that when the web page has scroll bars, they will disappear while the popup is activated. The underlying screen will slightly re-size shifting the content within it to utilise the additional width.</p>
             <hr/>
             <h3>Plain CSS Components</h3>
 
@@ -70,7 +73,7 @@
 
         
         <div class="footer"></div>
-
+        <?php include 'footer.php' ?>
         </div>
     
 </body>
