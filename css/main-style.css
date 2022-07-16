@@ -1,3 +1,15 @@
+@font-face {
+    font-family: Anton;
+    src: url('../fonts/Anton-Regular.ttf');
+}
+
+@keyframes titleColour
+{
+    0%, 100%  {color:red ;}    
+    33%  {color: green;}
+    66%   {color: blue;}
+}
+
 body 
 {
 	margin: auto;
@@ -8,9 +20,23 @@ p{
     margin: 5px;
 }
 
-h1, h2{
+h1{
+    font-family: Anton;
+    letter-spacing: 0.2rem;
+    text-align: center;
+    animation-name: titleColour;
+    animation-duration: 9s;  /*Set duration of ENTIRE cycle */
+    animation-timing-function: ease;
+    animation-iteration-count: infinite;
+}
+
+h2{
     text-align: center;
     color: blue;
+}
+
+h4{
+    color:firebrick;
 }
 
 .fwimage{
@@ -39,4 +65,27 @@ h1, h2{
 
    
    	
+}
+
+
+
+pre
+{
+	padding-top: 0.5rem;
+	padding-bottom: 0.5rem;
+	padding-left: 0.5rem;
+	font-size:calc(6px + 0.5vw);
+	background-color: #222222;
+	color:  lightblue;
+	border-style: inset;
+	border-radius: 10px;
+	max-width: 95%;
+}
+
+.comment{
+    color: lightgreen;
+}
+
+.toAlter{
+    color: yellow;
 }

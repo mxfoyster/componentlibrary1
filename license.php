@@ -18,7 +18,7 @@
         <div class="header">
            <h1>Component Library 1</h1> 
            <h2>By Mark Foyster</h2>
-           <?php $_GET['id']=5; include 'menu/menu.php' ?>
+           <?php $_GET['id']=6; include 'menu/menu.php' ?>
            <hr>
         </div>
 

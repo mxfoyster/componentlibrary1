@@ -49,7 +49,7 @@ This is done using menu.css. There are custom properties for the colours like so
 
 ```
 :root{
-	--menuColor: #45923a; /*rgba(247, 255, 247, 0.8; */
+	--menuColor: #45923a;
     --menuSelected: #7a9876;
 }
 ```

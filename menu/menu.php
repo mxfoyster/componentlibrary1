@@ -28,9 +28,10 @@ function isSelected($id){
 ?>
 <nav class="menuContainer">
     <a href="index.php"<?php isSelected(1);?>>Home</a>
-    <a href="gallery.php"<?php isSelected(2);?>>Gallery</a>
-    <a href="ttyheading.php"<?php isSelected(3);?>>TTY-Heading</a>
-    <a href="links.php"<?php isSelected(4);?>>Links</a>
-    <a href="license.php"<?php isSelected(5);?>>License</a>
+    <a href="justcss.php"<?php isSelected(2);?>>Plain CSS</a>
+    <a href="jsandcss.php"<?php isSelected(3);?>>CSS &amp; More</a>
+    <a href="gallery.php"<?php isSelected(4);?>>Gallery</a>
+    <a href="links.php"<?php isSelected(5);?>>Links</a>
+    <a href="license.php"<?php isSelected(6);?>>License</a>
    
 </nav>
