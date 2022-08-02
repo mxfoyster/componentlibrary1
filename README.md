@@ -19,3 +19,5 @@ Click the link for each project which each has it's own readme with screenshots,
 These will all be ongoing projects.
 
 The files in the root (and css subdirectory) of the repo comprise of a simple PHP website demonstrating implementation further. 
+
+The demo website is hosted live at [https://componentlibrary.markfoyster.co.uk/](https://componentlibrary.markfoyster.co.uk/).
