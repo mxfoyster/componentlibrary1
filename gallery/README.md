@@ -1,4 +1,4 @@
-# JavaScript and CSS photo gallery SYSTEM v1.00
+# JavaScript and CSS photo gallery SYSTEM v1.01
 ## By Mark Foyster
 
 ![Screen shot of gallery Window](galleryss.png)
@@ -51,6 +51,10 @@ Note the comments to help guide you.
 ---
 
 ### Change Log
+
+#### *v1.01
+
+- Updated to include a prompt as to which image is being displayed and how many images are available (eg Image 2 of 6).
 
 #### *v1.00* 
 
