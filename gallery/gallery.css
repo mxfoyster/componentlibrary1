@@ -50,6 +50,17 @@
     right: calc(10px + 5%);
 }
 
+#imageNumber{
+    position: absolute;
+    left: 50%;
+    top:10%;
+    background-color: lavender;
+    padding: 0.5rem;
+    border-radius: 5px;
+    transform: translateX(-50%);   
+}
+
+
 @keyframes controlFadeIn 
 {
     from { 

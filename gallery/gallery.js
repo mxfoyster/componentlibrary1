@@ -23,7 +23,7 @@ const galleryCanvasContainer = document.getElementById("galleryCanvasContainer")
 const imageRoot = "./images/"; //place the subdirectory your images are in here
 const imageList = ["image1.png", "image2.png", "image3.png"]; //place your image names in this array
 
-let currentImage = 1;
+let currentImage = 0;
 let zoomFactor = 1;
 let xDragOffset = 0;
 let yDragOffset = 0;
@@ -52,8 +52,9 @@ canvasHTML += "Your browser does not support canvas.</canvas>";
 let arrowsHTML = "<img src=\"gallery/left.svg\" id=\"leftArrow\"/><img src=\"gallery/right.svg\" id=\"rightArrow\"/>"
 let zoomHTML = "<span id=\"zoomCtlBox\"><img src=\"gallery/zoom-out.png\" class=\"zoomControls\" id=\"zoomOutCtl\" />";
 zoomHTML += "<img src=\"gallery/zoom-in.png\" class=\"zoomControls\" id=\"zoomInCtl\" /></span>"
+let imageNumberHTML = "<h5 id=\"imageNumber\">IMAGE " + (currentImage + 1) + " of " + imageList.length + "</h5>";
 
-galleryCanvasContainer.innerHTML =canvasHTML + arrowsHTML + zoomHTML;
+galleryCanvasContainer.innerHTML = canvasHTML + arrowsHTML + zoomHTML + imageNumberHTML;
 //get handles for canvas and controls we added
 const galleryCanvas = document.getElementById("galleryCanvas"); 
 const leftArrow = document.getElementById('leftArrow');
@@ -61,6 +62,7 @@ const rightArrow = document.getElementById('rightArrow');
 const zoomCtlBox = document.getElementById("zoomCtlBox");
 const zoomOutCtl = document.getElementById("zoomOutCtl");
 const zoomInCtl = document.getElementById("zoomInCtl");
+const imageNumber = document.getElementById("imageNumber");
 
 //listeners / event handlers for the arrow controls
 leftArrow.onclick = ()=>{
@@ -79,6 +81,7 @@ rightArrow.onclick = ()=>{
 
 //we need to be able to count down to fade out controls
 setInterval(function() {
+    imageNumber.innerHTML = "IMAGE " + (currentImage + 1) + " of " + imageList.length //update image number;
     //note popUpStatus is from the popup component, we need it to fade out the controls when popup dismissed
     if (controlsActiveCount > 0 && popUpStatus == true) controlsActiveCount-=1;
     else {
@@ -88,10 +91,12 @@ setInterval(function() {
         rightArrow.classList.add("fadeControlsOut");
         zoomCtlBox.classList.remove("fadeControlsIn");
         zoomCtlBox.classList.add("fadeControlsOut");
+        imageNumber.classList.remove("fadeControlsIn");
+        imageNumber.classList.add("fadeControlsOut");
     }
     //let's be sure everything is reset when the popup is closed ready for next use
     if (popUpStatus == false){
-        currentImage = 1;
+        currentImage = 0;
         resetCanvas(0);
     }
 }
@@ -120,13 +125,15 @@ function onCanvasPointerMovement(){
         rightArrow.classList.add("fadeControlsIn");
         zoomCtlBox.classList.remove("fadeControlsOut");
         zoomCtlBox.classList.add("fadeControlsIn");
+        imageNumber.classList.remove("fadeControlsOut");
+        imageNumber.classList.add("fadeControlsIn");
     }
 controlsActiveCount = 3;   
 }
 
 //loads image of supplied index from our image array
-function loadImage(imageNumber){
-thisImage.src = imageRoot + imageList[imageNumber];
+function loadImage(imageNum){
+thisImage.src = imageRoot + imageList[imageNum];
 thisImage.onload = function(){displayImage();
 };
 }
