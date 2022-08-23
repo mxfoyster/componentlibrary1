@@ -13,11 +13,11 @@ Zooming with the mouse wheel is included too.
 
 The controls will fade away after 3 seconds of pointer inactivity over the canvas. A simple ovement of the mouse or touch of the finger will re-activate them.
 
-**NOTE:** This now includes the SPINNER component from (https://loading.io/css/)[https://loading.io/css/]. This is pure CSS3 and HTML. It's released under the Creative Commons CC0 license and is free to use unconditionally. Check out the website and thank you to the original authors.
+**NOTE:** This now includes the SPINNER component from [https://loading.io/css/](https://loading.io/css/). This is pure CSS3 and HTML. It's released under the Creative Commons CC0 license and is free to use unconditionally. Check out the website and thank you to the original authors.
 
 ### implementation
 
-Install the Pop Up component found (HERE)[(https://github.com/mxfoyster/componentlibrary1/tree/main/popup] first.
+Install the Pop Up component found [HERE](https://github.com/mxfoyster/componentlibrary1/tree/main/popup) first.
 
 Repeat this process with this repo, you do not need `galleryss.png` or ths readme.
 
@@ -58,7 +58,7 @@ Note the comments to help guide you.
 
 #### *v1.10*
 
-- Inclusion of an externally sourced (SPINNER)[https://loading.io/css/] to help the user ascertain that the image is loading. Before, on large files and slower connections, it may well have been thought that the component had crashed. Now it's clearer what is going on.
+- Inclusion of an externally sourced [SPINNER](https://loading.io/css/) to help the user ascertain that the image is loading. Before, on large files and slower connections, it may well have been thought that the component had crashed. Now it's clearer what is going on.
 
 #### *v1.01*
 
