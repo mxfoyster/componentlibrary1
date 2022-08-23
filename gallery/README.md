@@ -1,4 +1,4 @@
-# JavaScript and CSS photo gallery SYSTEM v1.01
+# JavaScript, CSS & PHP photo gallery SYSTEM v1.10
 ## By Mark Foyster
 
 ![Screen shot of gallery Window](galleryss.png)
@@ -13,6 +13,8 @@ Zooming with the mouse wheel is included too.
 
 The controls will fade away after 3 seconds of pointer inactivity over the canvas. A simple ovement of the mouse or touch of the finger will re-activate them.
 
+**NOTE:** This now includes the SPINNER component from (https://loading.io/css/)[https://loading.io/css/]. This is pure CSS3 and HTML. It's released under the Creative Commons CC0 license and is free to use unconditionally. Check out the website and thank you to the original authors.
+
 ### implementation
 
 Install the Pop Up component found (HERE)[(https://github.com/mxfoyster/componentlibrary1/tree/main/popup] first.
@@ -25,6 +27,7 @@ Add the CSS and JavaScript sources in the `<head>` like so:
     <link rel="stylesheet" href="popup/popup.css">
     <link rel="stylesheet" href="menu/menu.css">
     <link rel="stylesheet" href="gallery/gallery.css">
+    <link rel="stylesheet" href="gallery/spinner.css">
     <script src="popup/popup.js" defer></script>
     <script src="gallery/gallery.js" defer></script>
 ```
@@ -35,7 +38,8 @@ Now add the following code into the `<body>` of the web page:
     <div class="popUp" id="popUp">
         <div class="popUpTitleContainer"><span class="popUpTitle">Photo Gallery</span></div>
         <div id="galleryCanvasContainer"></div>
-        <img id="closeBtn" src="popup/closebtn.png"> 
+        <img id="closeBtn" src="popup/closebtn.png">
+        <span id="spinnerContainer"><?php include 'gallery/spinner.php' ?></span> 
     </div>
 ```
 
@@ -51,6 +55,10 @@ Note the comments to help guide you.
 ---
 
 ### Change Log
+
+#### *v1.10*
+
+- Inclusion of an externally sourced (SPINNER)[https://loading.io/css/] to help the user ascertain that the image is loading. Before, on large files and slower connections, it may well have been thought that the component had crashed. Now it's clearer what is going on.
 
 #### *v1.01*
 

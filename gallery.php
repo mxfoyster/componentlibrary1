@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="popup/popup.css">
     <link rel="stylesheet" href="menu/menu.css">
     <link rel="stylesheet" href="gallery/gallery.css">
+    <link rel="stylesheet" href="gallery/spinner.css">
     <title>Component Library 1 (Gallery)</title>
     <script src="popup/popup.js" defer></script>
     <script src="gallery/gallery.js" defer></script>
@@ -29,7 +30,8 @@
                 <div id="galleryCanvasContainer">
               
                 </div>
-                <img id="closeBtn" src="popup/closebtn.png"> 
+                <img id="closeBtn" src="popup/closebtn.png">
+                <span id="spinnerContainer"><?php include 'gallery/spinner.php' ?></span> 
             </div>
            
             <p>Just a simple gallery viewer with zoom and drag</p>

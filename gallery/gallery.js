@@ -23,6 +23,9 @@ const galleryCanvasContainer = document.getElementById("galleryCanvasContainer")
 const imageRoot = "./images/"; //place the subdirectory your images are in here
 const imageList = ["image1.png", "image2.png", "image3.png"]; //place your image names in this array
 
+//add the spinner 
+const spinnerContainer = document.getElementById('spinnerContainer');
+
 let currentImage = 0;
 let zoomFactor = 1;
 let xDragOffset = 0;
@@ -133,6 +136,7 @@ controlsActiveCount = 3;
 
 //loads image of supplied index from our image array
 function loadImage(imageNum){
+spinnerContainer.style.display = "inline"; //show the "loading" spinner
 thisImage.src = imageRoot + imageList[imageNum];
 thisImage.onload = function(){displayImage();
 };
@@ -140,6 +144,7 @@ thisImage.onload = function(){displayImage();
 
 //display image in 'thisImage' onto canvas at best fit
 function displayImage(scaleIt = true){
+    spinnerContainer.style.display = "none"; //hide the "loading" spinner
     //canvas event handlers
     galleryCanvas.onwheel = zoomByWheel;
     zoomOutCtl.onclick = zoomOutByBtn;
