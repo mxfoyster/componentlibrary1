@@ -40,6 +40,8 @@
 
             <p>The gallery displays the images on a HTML canvas. The controls are displayed during mouse or pointer (touch) activity over the canvas and will fade out after about 3 seconds of inactivity. Once mouse / pointer movement is detected, the controls will re-appear. This feature allows for unobstructed view of the images.</p>
 
+            <p>Towards the top of the screen, the current image number and the total number of images within the gallery are displayed (eg: <i>Image 1 of 3</i>)</p>
+            
             <p>The Left and right arrows displayed to the left and the right of the popup window respectively allow navigation between multiple images.</p> 
             <img src="gallery/left.svg" alt="left arrow">&nbsp;&nbsp;<img src="gallery/right.svg" alt="right arrow">
             
@@ -48,12 +50,14 @@
 
             <p>The image can be dragged within the popup window using the mouse (or finger with touch).</p>
 
-            <p>I have not extensively tested this component, in particular the 'touch' features. Be sure to let me know if you find any bugs or have suggestions.</p>
+            <p>Whilst an image is loading, so the user does not get confused, a 'spinner' is displayed. you will see in the source code that I utilised someone else's spinner component for this. Find it at <a href="https://loading.io/css/">Loading.io</a>. It's by <b>PlotDB Ltd</b> and is licensed under <i>CC0</i> creative commons and can therefore be used without attribution. Check the page out, there's much more useful stuff on there and they deserve a visit!</p>
+
+            <p>I have not extensively tested this gallery component, in particular the 'touch' features. Be sure to let me know if you find any bugs or have suggestions.</p>
 
             <p>The code can be found in my GitHub repository <a href="https://github.com/mxfoyster/componentlibrary1/tree/main/gallery">HERE</a></p>
 
             <h3>Implementation</h3>
-            <p>Copy the <i>gallery</i> folder into yuor project, you cam leave out the README.md and galleryss.png files if you like.</p> 
+            <p>Copy the <i>gallery</i> folder into your project, you cam leave out the README.md and galleryss.png files if you like.</p> 
 
             <p>Add the CSS and JavaScript sources in the <i>&lt;head></i> like so:</p> 
 
@@ -72,6 +76,7 @@
     &lt;div class="popUp" id="popUp">
         &lt;div class="popUpTitleContainer">&lt;span class="popUpTitle"><span class="toAlter">Photo Gallery</span>&lt;/span>&lt;/div>
         &lt;div id="galleryCanvasContainer">&lt;/div>
+        &lt;span id="spinnerContainer">&lt;?php include 'gallery/spinner.php' ?>&lt;/span> 
         &lt;img id="closeBtn" src="popup/closebtn.png"> 
     &lt;/div>
 
