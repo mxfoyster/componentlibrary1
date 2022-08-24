@@ -1,6 +1,6 @@
 /*
     #############################################
-    #   Simple Pop Up Window v1.10              #
+    #   Simple Pop Up Window v1.11              #
     #       By Mark Foyster                     #
     #############################################
 
@@ -37,18 +37,20 @@ function activatePopup(title, contents = "default"){
     let fileName = "popup/" + contents + ".html"; //build filename from parameter
     popUpWindow.setAttribute("style","");
     if (!popUpStatus) {
-        //load popup text
-        fetch(fileName, {
-          
-        }).then(function(response) {
-            return response.text();
-        }).then(function(response) {  
-             document.getElementById("popUpBody").innerHTML = response;
-             document.getElementById("popUpTitle").innerHTML = title;
-        }).catch (function (error){
-            console.log(error);  
-            //noData();
-        });
+        //load popup text if it's not overridden
+        if (contents !="override"){
+            fetch(fileName, {
+                
+            }).then(function(response) {
+                return response.text();
+            }).then(function(response) {  
+                    document.getElementById("popUpBody").innerHTML = response;
+                    document.getElementById("popUpTitle").innerHTML = title;
+            }).catch (function (error){
+                console.log(error);  
+                //noData();
+            });
+        }
 
         //display it
         popUpWindow.classList.remove("popUpFadeOut");

@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="popup/popup.css">
     <link rel="stylesheet" href="menu/menu.css">
     <link rel="stylesheet" href="justcss/justcss.css">
-    <script src="popup/popup.js" defer></script>
+    <!-- <script src="popup/popup.js" defer></script> -->
     
     
     <title>Component Library 1 (Pop Up Demo)</title>

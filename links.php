@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="justcss/justcss.css">
     <title>Component Library 1 (Useful Links)</title>
 
-    <script src="popup/popup.js" defer></script>
+    <!-- <script src="popup/popup.js" defer></script> -->
 </head>
 <body>
     <div class="main-container">

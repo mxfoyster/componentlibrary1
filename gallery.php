@@ -26,7 +26,7 @@
         <div class="middle">
             <h3>Gallery</h3>
             <div class="popUp" id="popUp">
-                <div class="popUpTitleContainer"><span class="popUpTitle">Photo Gallery</span></div>
+                <div class="popUpTitleContainer"><span class="popUpTitle"></span></div>
                 <div id="galleryCanvasContainer">
               
                 </div>
@@ -35,7 +35,7 @@
             </div>
            
             <p>Just a simple gallery viewer with zoom and drag</p>
-            <button type="button" id="activatePopUp">Open Gallery</button>
+            <button type="button" onclick="activatePopup('Photo Gallery','override')">Open Gallery</button>
             <p>The gallery stores the server path to the images in a constant and the filenames of each image in an array. Simply alter these in the code as shown in the instructions (README.md).</p>
 
             <p>The gallery displays the images on a HTML canvas. The controls are displayed during mouse or pointer (touch) activity over the canvas and will fade out after about 3 seconds of inactivity. Once mouse / pointer movement is detected, the controls will re-appear. This feature allows for unobstructed view of the images.</p>
@@ -74,7 +74,7 @@
 
 <pre><code>
     &lt;div class="popUp" id="popUp">
-        &lt;div class="popUpTitleContainer">&lt;span class="popUpTitle"><span class="toAlter">Photo Gallery</span>&lt;/span>&lt;/div>
+        &lt;div class="popUpTitleContainer">&lt;/div>
         &lt;div id="galleryCanvasContainer">&lt;/div>
         &lt;span id="spinnerContainer">&lt;?php include 'gallery/spinner.php' ?>&lt;/span> 
         &lt;img id="closeBtn" src="popup/closebtn.png"> 
@@ -90,8 +90,16 @@
     const imageList = ["image1.png", "image2.png", "image3.png"]; <span class="comment">//place your image names in this array</span>
 </code></pre>
 
-            <p>Note the comments to help guide you.</p> 
+            <p>To trigger the gallery, you can add a button like this:</p>
 
+            <pre>
+<code>
+    &lt;button type="button" onclick="activatePopup(<span class="toAlter">'Gallery Title Here'</span>, 'override')"><span class="toAlter">GALLERY</span>&lt;/button&gt;
+</code>
+</pre>
+            <p>You can choose whatever title you like here. The override string tells the popup not to try and load an external html file, be sure to add it as above!</p>
+            <p>Note the comments to help guide you.</p> 
+            
 
             <h3>What next?</h3>
             <p>I am thinking about some animated transitions between image changes. A feature to load a lower resolution image initially and / or a 'loading image' banner when using large image file sizes seems like a good idea too. I think there is room for improvement on the 'error handling' aspect of the image loading.</p>

@@ -132,6 +132,7 @@
             <h4>Multiple Pop Up's</h4>
 
             <p>The steps are as above but you simply create a different html file for each Pop Up within the 'popup' subdirectory and pass the name (minus the '.html') as the second parameter when you call the function. Here's an example, in this case the contents is in 'newfile.html': </p>
+            <p><b>NOTE:</b> You CANNOT choose 'override' as a name for an external html file. It's reserved to allow the loading of external html to be overriden. For an example of this, check out the <a href="gallery.php">GALLERY</a> project.</p>
 <pre>
 <code>
     &lt;button type="button" onclick="activatePopup(<span class="toAlter">'New Title Here','newfile'</span>)"><span class="toAlter">Pop Up</span>&lt;/button&gt;

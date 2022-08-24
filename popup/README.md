@@ -1,5 +1,5 @@
 
-# Simple Pop Up Window v1.10           
+# Simple Pop Up Window v1.11           
 ## By Mark Foyster                 
    
 ![Screen shot of Pop Up Window](popupss.png)
@@ -71,6 +71,10 @@ Remember, it would be easy to style the content of the pop up's by using inline 
 ---
 
 ### Change Log
+
+#### *v1.11*
+
+- Quick bugfix to allow fetch API to external content to be overridden in external content like when we use it for the Gallery component.
 
 #### *v1.10*
 
