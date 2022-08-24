@@ -36,7 +36,7 @@ Now add the following code into the `<body>` of the web page:
 
 ```
     <div class="popUp" id="popUp">
-        <div class="popUpTitleContainer"><span class="popUpTitle">Photo Gallery</span></div>
+        <div class="popUpTitleContainer"><span class="popUpTitle"></span></div>
         <div id="galleryCanvasContainer"></div>
         <img id="closeBtn" src="popup/closebtn.png">
         <span id="spinnerContainer"><?php include 'gallery/spinner.php' ?></span> 
@@ -50,7 +50,15 @@ Edit *gallery.js* to add the correct folder and add your source images into the 
     const imageList = ["image1.png", "image2.png", "image3.png"]; //place your image names in this array
 ```
 
-Note the comments to help guide you.
+To trigger the gallery, you can add a button like this:
+
+
+```
+    <button type="button" onclick="activatePopup('Gallery Title Here', 'override')">GALLERY</button>
+```
+
+You can choose whatever title you like here. The override string tells the popup not to try and load an external html file, be sure to add it as above so remember to inculde it if you call the function directly to invoke the gallery using JavaScript!
+
 
 ---
 

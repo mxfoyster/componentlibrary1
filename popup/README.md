@@ -41,6 +41,7 @@ This is possible because we can simply change the source file name. We create as
     <button type="button" onclick="activatePopUp('My title Here', 'newfile')">Pop Up</button>
 ```
 
+**NOTE**: You cannot use *'override'* as a file name, it's reserved to stop external content being loaded when another component (the Gallery component for example) is using it!
 
 ### Customising style
 
