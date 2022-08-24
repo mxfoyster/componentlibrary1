@@ -7,12 +7,12 @@
     <link rel="stylesheet" href="css/main-style.css">
     <link rel="stylesheet" href="popup/popup.css">
     <link rel="stylesheet" href="menu/menu.css">
-    <link rel="stylesheet" href="gallery/gallery.css">
+    <!-- <link rel="stylesheet" href="gallery/gallery.css"> -->
     <link rel="stylesheet" href="ttyheading/ttyheading.css">
     <script src="ttyheading/ttyheading.js" defer></script>
     <title>Component Library 1 (CSS &amp; More )</title>
     <script src="popup/popup.js" defer></script>
-    <script src="gallery/gallery.js" defer></script>
+    <!-- <script src="gallery/gallery.js" defer></script> -->
 </head>
 <body>
     <div class="main-container">
@@ -85,13 +85,14 @@
             <hr>
             <h3 id="popup-instructions">Pop Up</h3>
             <div class="popUp" id="popUp">
-                <div class="popUpTitleContainer"><span class="popUpTitle">Pop Up Title Here</span></div>
+                <div class="popUpTitleContainer"><span id="popUpTitle">Pop Up Title Here</span></div>
                 <img id="closeBtn" src="popup/closebtn.png">
-                <div class="popUpBody"><p>PLACE CONTENTS FOR YOUR POP UP IN HERE</p></div>     
+                <div id="popUpBody"></div>     
             </div>
-            <p>Press the button to see the popup, code can be found in my GitHub repository <a href="https://github.com/mxfoyster/componentlibrary1/tree/main/popup">HERE</a></p>
+            <p>Press the buttons to see the popup's, code can be found in my GitHub repository <a href="https://github.com/mxfoyster/componentlibrary1/tree/main/popup">HERE</a></p>
             
-            <button type="button" id="activatePopUp">Pop Up</button>
+            <button type="button" onclick="activatePopup('First Pop Up')">Pop Up</button>&nbsp;&nbsp;
+            <button type="button" onclick="activatePopup('Second Pop Up', 'second')">AnotherPop Up</button>
 
             <p>Note how scrolling on the main window is disabled when the popup is active. This makes it easier to use scrolling within the popup. The down side is that when the web page has scroll bars, they will disappear while the popup is activated. The underlying screen will slightly re-size shifting the content within it to utilise the additional width.</p>
 
@@ -112,21 +113,31 @@
 <pre>
 <code>
     &lt;div class="popUp" id="popUp">
-        &lt;div class="popUpTitleContainer">&gt;span class="popUpTitle"><span class="toAlter">Pop Up Title Here</span>&lt;/span>&lt;/div>
+        &lt;div class="popUpTitleContainer">&gt;span class="popUpTitle">&lt;/span>&lt;/div>
         &lt;img id="closeBtn" src="popup/closebtn.png">
-        &lt;div class="popUpBody">&lt;p><span class="toAlter">PLACE CONTENTS FOR YOUR POP UP IN HERE</span>&lt;/p>&lt;/div>     
+        &lt;div id="popUpBody">&lt;/div>     
     &lt;/div>
 
 </code>
 </pre>
 
-            <p>Use the `activatePopUp` ID to your control to launch the product, EG:</p> 
+            <p>Create a file in the <i>popup</i> subdirectory called 'default.html' and place the html content for the popup inside it.</p>
+            <p>Call the `activatePopup()` function to launch the product. Pass the title as the first parameter. For example, you could use an <i>onclick</i> event handler on a button like this:</p> 
 <pre>
 <code>
-    &lt;button type="button" id="activatePopUp"><span class="toAlter">Pop Up</span>&lt;/button&gt;
+    &lt;button type="button" onclick="activatePopup(<span class="toAlter">'Pop Up Title Here'</span>)"><span class="toAlter">Pop Up</span>&lt;/button&gt;
 </code>
 </pre>
 
+            <h4>Multiple Pop Up's</h4>
+
+            <p>The steps are as above but you simply create a different html file for each Pop Up within the 'popup' subdirectory and pass the name (minus the '.html') as the second parameter when you call the function. Here's an example, in this case the contents is in 'newfile.html': </p>
+<pre>
+<code>
+    &lt;button type="button" onclick="activatePopup(<span class="toAlter">'New Title Here','newfile'</span>)"><span class="toAlter">Pop Up</span>&lt;/button&gt;
+</code>            
+</pre>
+            <p>There is no real limit to how many pop up's you can have, it's just one pop up and the contents is loaded dynamically. Because of this, only one pop up can be displayed at a time, they cannot be overlayed. It would be possible to change the contents from within the pop up by simply calling 'activatePopup' twice. The first time would close the pop up and the second is where you would pass your new title and content filename as parameters to re-invoke it. I haven't had a need to try this yet, so this idea is untested!</p>
             <h4>Customising style</h4> 
 
             <p>Within the popup.css, at the top are the following custom properties:</p> 

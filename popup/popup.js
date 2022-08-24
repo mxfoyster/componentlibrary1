@@ -1,6 +1,6 @@
 /*
     #############################################
-    #   Simple Pop Up Window v1.00              #
+    #   Simple Pop Up Window v1.10              #
     #       By Mark Foyster                     #
     #############################################
 
@@ -26,15 +26,31 @@ const closeBtn = document.getElementById('closeBtn');
 
 let popUpStatus = false;
 
-activatePopUpBtn.addEventListener("click", activatePopup);
+//activatePopUpBtn.addEventListener("click", activatePopup);
 closeBtn.addEventListener("click", activatePopup);
 
 //start with our popup hidden
 popUpWindow.setAttribute("style","visibility: hidden");
 
-function activatePopup(thisID){
+function activatePopup(title, contents = "default"){
+    
+    let fileName = "popup/" + contents + ".html"; //build filename from parameter
     popUpWindow.setAttribute("style","");
     if (!popUpStatus) {
+        //load popup text
+        fetch(fileName, {
+          
+        }).then(function(response) {
+            return response.text();
+        }).then(function(response) {  
+             document.getElementById("popUpBody").innerHTML = response;
+             document.getElementById("popUpTitle").innerHTML = title;
+        }).catch (function (error){
+            console.log(error);  
+            //noData();
+        });
+
+        //display it
         popUpWindow.classList.remove("popUpFadeOut");
         popUpWindow.classList.add("popUpFadeIn");
         document.body.classList.add("stopScrolling"); //stop mousewheel etc scrolling main window while dialog activated

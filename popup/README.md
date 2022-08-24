@@ -1,5 +1,5 @@
 
-# Simple Pop Up Window v1.01           
+# Simple Pop Up Window v1.10           
 ## By Mark Foyster                 
    
 ![Screen shot of Pop Up Window](popupss.png)
@@ -19,17 +19,28 @@ ADD THE FOLLOWING HTML WITHIN YOUR BODY
 
 ```
     <div class="popUp" id="popUp">
-        <div class="popUpTitleContainer"><span class="popUpTitle">Pop Up Title Here</span></div>
+        <div class="popUpTitleContainer"><span id="popUpTitle"></span></div>
         <img id="closeBtn" src="popup/closebtn.png">
-        <div class="popUpBody"><p>PLACE CONTENTS FOR YOUR POP UP IN HERE</p></div>     
+        <div id="popUpBody"></div>     
     </div>
 ```  
 
-USE THE `activatePopUp` ID to your control to launch the product, EG:
+Within the *popup* subdirectory, create a file called default.html and place your pop up contents in it.
+
+Use the `activatePopUp()` function to your control to launch the pop up. Pass the title as the first argument, EG:
 
 ```
-    <button type="button" id="activatePopUp">Pop Up</button>
+    <button type="button" onclick="activatePopUp('My title Here')">Pop Up</button>
 ```
+
+### Implementing multiple pop ups
+
+This is possible because we can simply change the source file name. We create as many html files as we need inside the *popup* subdirectory and pass a second parapeter to the `activatePopUp()` function which is the filename minus the **.html**. The function will now load this file instead of *default.html*. Here's an example, again using a button:
+
+```
+    <button type="button" onclick="activatePopUp('My title Here', 'newfile')">Pop Up</button>
+```
+
 
 ### Customising style
 
@@ -55,9 +66,16 @@ Simply change the colours and sizes to your preference for minor changes.
 
 The remainder of this CSS file is pretty basic. Further customisation is easy using fundamental CSS knowledge.
 
+Remember, it would be easy to style the content of the pop up's by using inline styles within the html content files the pop up loads. Alternatively, reference a seperate external css file in the head of your page (I suggest separate to keep things neat) and style your content that way!
+
 ---
 
 ### Change Log
+
+#### *v1.10*
+
+- The pop up contents is now dynamically loaded when the function is called from a html file. Different html files can be selected when the activatePopup function is called which means we can change the content as much as we like.
+
 #### *v1.01* 
 
 - Addition of inner container div to PopUp Window to facilitate easier addition of content. Before, added contentcould display over title if not formatted correctly. It's now bound to the container.
